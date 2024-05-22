@@ -11,7 +11,6 @@ body {
   display: flex;
   flex-direction: row;
   align-items: end;
-  background-color: rgb(175, 181, 179);
 }
 
 .floor-container {
