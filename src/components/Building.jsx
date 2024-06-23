@@ -69,12 +69,7 @@ export default function Building({
 
     elevatorStatuses.forEach((elevator, index) => {
       const elevatorTime = calculateElevatorWaitTime(index, floorNum);
-      if (!isFinite(elevatorTime)) {
-        console.error(
-          `Error calculating wait time for elevator ${index} and floor ${floorNum}`
-        );
-        return;
-      }
+      
       if (elevatorTime < minTime) {
         minTime = elevatorTime;
         closestElevator = index;
@@ -100,7 +95,7 @@ export default function Building({
       currentFloor += direction * distanceMoved;
     } else if (elevator.isWaiting) {
       const now = Date.now();
-      const elapsedTime = now - elevator.startWaiting;
+      const elapsedTime = waitTime - (now - elevator.startWaiting);
       totalWaitTime += elapsedTime;
     }
 
