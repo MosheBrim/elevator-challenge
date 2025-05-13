@@ -70,7 +70,6 @@ export default function BuildingManager({
         </form>
       </div>
 
-      {/* Buildings container */}
       <div className="buildings-container">
         {buildings.map((building, index) => (
           <div key={building.id} className="building-wrapper">

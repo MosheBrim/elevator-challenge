@@ -4,15 +4,13 @@ import { ElevatorSystem } from "../models/ElevatorSystem";
 import { Factory } from "../models/Factory";
 
 export function useElevatorSystem(buildingConfig: BuildingConfig) {
-  // Create a factory first
+  // Keep model objects between renders
   const factoryRef = useRef<Factory>(new Factory(buildingConfig));
 
-  // Use the factory to create the ElevatorSystem
   const elevatorSystemRef = useRef<ElevatorSystem>(
     factoryRef.current.createElevatorSystem()
   );
 
-  // Initialize states using the already created ElevatorSystem
   const [elevatorStates, setElevatorStates] = useState<ElevatorState[]>(
     elevatorSystemRef.current.getElevatorStates()
   );
@@ -21,21 +19,19 @@ export function useElevatorSystem(buildingConfig: BuildingConfig) {
     elevatorSystemRef.current.getFloorStates()
   );
 
+  // Update UI every 100ms
   useEffect(() => {
-    // Set up state synchronization with the elevator system
     const syncInterval = setInterval(() => {
       setElevatorStates(elevatorSystemRef.current.getElevatorStates());
       setFloorStates(elevatorSystemRef.current.getFloorStates());
-    }, 100); // Update UI state every 100ms
+    }, 100); 
 
     return () => {
       clearInterval(syncInterval);
     };
   }, []);
 
-  // Handle elevator call from a floor
   const handleElevatorCall = (floorNum: number): void => {
-    // Handle the call in our elevator system
     elevatorSystemRef.current.handleElevatorCall(floorNum);
   };
 

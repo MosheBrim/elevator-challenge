@@ -49,6 +49,7 @@ export class Elevator {
     sharedDingSound.play();
   }
 
+  // Start moving to target floor
   public moveTo(targetFloor: number): void {
     const distance = Math.abs(this.state.floor - targetFloor);
     const milliseconds = distance * this.config.floorTravelTimeMs;
@@ -61,6 +62,7 @@ export class Elevator {
     this.state.doorOpenTime = null;
   }
 
+  // Handle arrival at floor
   public arrive(targetFloor: number): void {
     if (Math.abs(this.state.floor - targetFloor) > 0) {
       this.playArrivalSound();
@@ -71,6 +73,7 @@ export class Elevator {
     this.state.floor = targetFloor;
     this.state.travelTimeMs = 0;
 
+    // Remove floor from queue
     if (
       this.state.floorQueue.length > 0 &&
       this.state.floorQueue[0] === targetFloor
@@ -110,19 +113,20 @@ export class Elevator {
     return this.state.floor;
   }
 
+  // Calculate wait time to reach a floor
   public calculateWaitTime(floorNum: number): number {
     let totalWaitTime = 0;
     let currentPosition = this.getCurrentPosition();
 
-    // Add remaining movement time if elevator is currently moving
+    // Add current movement time
     totalWaitTime += this.calculateRemainingMovementTime();
 
-    // Add remaining door open time if doors are currently open
+    // Add door time
     totalWaitTime += this.calculateRemainingDoorOpenTime();
 
     let lastPosition = currentPosition;
 
-    // Calculate wait time for queued floors
+    // Add time for each stop
     for (const stop of this.state.floorQueue) {
       const floorDistance = Math.abs(lastPosition - stop);
       totalWaitTime += floorDistance * this.config.floorTravelTimeMs;
@@ -130,7 +134,7 @@ export class Elevator {
       lastPosition = stop;
     }
 
-    // Add travel time to the requested floor
+    // Add time to final floor
     const finalDistance = Math.abs(lastPosition - floorNum);
     totalWaitTime += finalDistance * this.config.floorTravelTimeMs;
 

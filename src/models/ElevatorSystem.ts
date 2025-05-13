@@ -16,15 +16,12 @@ export class ElevatorSystem {
     this.elevatorCount = config.elevatorCount;
     this.config = config;
 
-    // Initialize factory
     this.factory = new Factory(config);
 
-    // Initialize floors
     this.floors = Array(this.floorCount)
       .fill(null)
       .map(() => this.factory.createFloor());
 
-    // Initialize elevators
     this.elevators = Array(this.elevatorCount)
       .fill(null)
       .map(() => this.factory.createElevator());
@@ -38,6 +35,7 @@ export class ElevatorSystem {
     return this.floors.map((floor) => floor.getState());
   }
 
+  // Find fastest elevator for this floor
   public findClosestElevator(floorNum: number): {
     elevatorIndex: number | null;
     waitTime: number;
@@ -65,6 +63,7 @@ export class ElevatorSystem {
       return;
     }
 
+    // Send best elevator to handle call
     const { elevatorIndex, waitTime } = this.findClosestElevator(floorNum);
 
     if (elevatorIndex !== null) {
@@ -74,6 +73,7 @@ export class ElevatorSystem {
     }
   }
 
+  // Start pending elevator trips
   private processElevatorQueues(): void {
     this.elevators.forEach((elevator, index) => {
       if (elevator.canProcessNextFloor()) {
@@ -85,33 +85,30 @@ export class ElevatorSystem {
     });
   }
 
+  // Control elevator movement with timers
   private moveElevator(elevatorIndex: number, targetFloor: number): void {
     const elevator = this.elevators[elevatorIndex];
     elevator.moveTo(targetFloor);
 
-    // Use targetFloor reference for setTimeout callback
     const targetFloorRef = targetFloor;
 
-    // Set a timeout for when the elevator arrives at the target floor
+    // Travel time
     setTimeout(() => {
       elevator.arrive(targetFloorRef);
 
-      // Update floor state
       this.floors[targetFloorRef].setElevatorPresent(true);
 
-      // Start closing doors 0.5 seconds before the wait time ends
       const doorOpenTime = this.config.doorOpenTimeMs - 500;
 
-      // First timeout to start closing the doors
+      // Door close time
       setTimeout(() => {
         elevator.closeDoors();
       }, doorOpenTime);
 
-      // Second timeout for when the elevator is ready to move again
+      // Process next floor after doors close
       setTimeout(() => {
         this.floors[targetFloorRef].setElevatorPresent(false);
 
-        // Process the next elevator in the queue
         this.processElevatorQueues();
       }, this.config.doorOpenTimeMs);
     }, this.elevators[elevatorIndex].getState().travelTimeMs);

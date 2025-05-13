@@ -15,6 +15,7 @@ export class Floor {
     return { ...this.state };
   }
 
+  // Set call button on with wait time
   public activateCall(estimatedWaitTimeMs: number): void {
     this.state.isCallActive = true;
     this.state.estimatedWaitTimeMs = estimatedWaitTimeMs;
@@ -25,6 +26,7 @@ export class Floor {
     this.state.estimatedWaitTimeMs = 0;
   }
 
+  // Update when elevator arrives/leaves
   public setElevatorPresent(present: boolean): void {
     this.state.hasElevator = present;
     if (present) {
@@ -33,6 +35,7 @@ export class Floor {
     }
   }
 
+  // Check if can call elevator
   public isCallableForElevator(): boolean {
     return !this.state.isCallActive && !this.state.hasElevator;
   }
