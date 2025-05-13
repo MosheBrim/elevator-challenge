@@ -1,0 +1,22 @@
+.building-container {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  width: fit-content;
+  height: calc(100% - 100px);
+  background-color: rgb(247, 226, 222);
+  border-radius: 12px;
+  padding: 16px 16px 0px 16px;
+  margin: 16px;
+}
+
+.floors {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.elevators {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}

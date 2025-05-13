@@ -1,0 +1,118 @@
+.floor-container {
+  height: 110px;
+  width: 380px;
+  text-align: center;
+}
+
+.floor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: silver;
+  background-image: linear-gradient(335deg, #b00 23px, transparent 23px),
+    linear-gradient(155deg, #d00 23px, transparent 23px),
+    linear-gradient(335deg, #b00 23px, transparent 23px),
+    linear-gradient(155deg, #d00 23px, transparent 23px);
+  background-size: 58px 58px;
+  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+  height: 103px;
+}
+
+.floor-divider {
+  height: 7px;
+  background-color: #000000;
+}
+
+.timer-container {
+  width: 200px;
+  height: 80px;
+  margin: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer {
+  width: 200px;
+  height: 80px;
+  font-size: 4em;
+  padding: 0px 10px;
+  border-radius: 0.5em;
+  font: 4em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  text-align: center;
+  color: rgb(4, 213, 4);
+  text-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0, hsla(0, 0%, 100%, 0.6) 0 2px 1px;
+  background-color: hsl(0, 3%, 80%);
+  box-shadow: inset hsla(0, 0%, 15%, 1) 0 0px 0px 4px,
+    inset hsla(0, 0%, 15%, 0.8) 0 -1px 5px 4px;
+  transition: color 0.2s;
+}
+
+.button-active {
+  color: rgb(4, 213, 4) !important;
+}
+
+/* Metal Button Styles */
+.metal {
+  position: relative;
+  margin: 5px 20px;
+  outline: none;
+  font: bold 4em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  text-align: center;
+  color: hsla(0, 0%, 20%, 1);
+  text-shadow: hsla(0, 0%, 40%, 0.5) 0 -1px 0, hsla(0, 0%, 100%, 0.6) 0 2px 1px;
+  background-color: hsl(0, 0%, 90%);
+  box-shadow: inset hsla(0, 0%, 15%, 1) 0 0px 0px 4px,
+    inset hsla(0, 0%, 15%, 0.8) 0 -1px 5px 4px,
+    inset hsla(0, 0%, 0%, 0.25) 0 -1px 0px 7px,
+    inset hsla(0, 0%, 100%, 0.7) 0 2px 1px 7px,
+    hsla(0, 0%, 0%, 0) 0 -5px 6px 4px,
+    hsla(0, 0%, 100%, 0) 0 5px 6px 4px;
+  transition: color 0.2s;
+}
+
+.metal.linear {
+  width: 100px;
+  font-size: 4em;
+  height: 80px;
+  border-radius: 0.5em;
+  background-image: -webkit-repeating-linear-gradient(
+      left,
+      hsla(0, 0%, 100%, 0) 0%,
+      hsla(0, 0%, 100%, 0) 6%,
+      hsla(0, 0%, 100%, 0.1) 7.5%
+    ),
+    -webkit-repeating-linear-gradient(
+      left,
+      hsla(0, 0%, 0%, 0) 0%,
+      hsla(0, 0%, 0%, 0) 4%,
+      hsla(0, 0%, 0%, 0.03) 4.5%
+    ),
+    -webkit-repeating-linear-gradient(
+      left,
+      hsla(0, 0%, 100%, 0) 0%,
+      hsla(0, 0%, 100%, 0) 1.2%,
+      hsla(0, 0%, 100%, 0.15) 2.2%
+    ),
+    linear-gradient(
+      180deg,
+      hsl(0, 0%, 78%) 0%,
+      hsl(0, 0%, 90%) 47%,
+      hsl(0, 0%, 78%) 53%,
+      hsl(0, 0%, 70%) 100%
+    );
+}
+
+.metal:active {
+  color: hsl(210, 100%, 40%);
+  text-shadow: hsla(210, 100%, 20%, 0.3) 0 -1px 0, hsl(210, 100%, 85%) 0 2px 1px,
+    hsla(200, 100%, 80%, 1) 0 0 5px, hsla(210, 100%, 50%, 0.6) 0 0 20px;
+  box-shadow: inset hsla(210, 100%, 30%, 1) 0 0px 0px 4px,
+    inset hsla(210, 100%, 15%, 0.4) 0 -1px 5px 4px,
+    inset hsla(210, 100%, 20%, 0.25) 0 -1px 0px 7px,
+    inset hsla(210, 100%, 100%, 0.7) 0 2px 1px 7px,
+    hsla(210, 100%, 75%, 0.8) 0 0px 3px 2px,
+    hsla(210, 50%, 40%, 0) 0 -5px 6px 4px,
+    hsla(210, 80%, 95%, 0) 0 5px 6px 4px;
+}

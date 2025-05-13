@@ -1,0 +1,54 @@
+.elevator {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.elevator-wrapper {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 0 2px;
+}
+
+.elevator-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  transform: translateY(var(--target-floor));
+  transition: transform var(--travel-time) ease-in-out;
+  width: 110px;
+  height: 110px;
+}
+
+.elevator-door {
+  transition: width 500ms ease-in-out;
+  background: linear-gradient(to bottom, #b0b0b0, #888888, #b0b0b0);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: #aaaaaa;
+  z-index: 1;
+  width: 50%;
+}
+
+.elevator-door-left {
+  left: 0;
+  border-right: 1px solid #555;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.elevator-door-right {
+  right: 0;
+  border-left: 1px solid #555;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.elevator-door.elevator-door-open {
+  width: 0%;
+}

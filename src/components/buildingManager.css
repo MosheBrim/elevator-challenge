@@ -1,0 +1,126 @@
+
+.building-manager {
+    width: 100%;
+    background-color: rgb(247, 226, 222);
+    color: #777777;
+    padding: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+  }
+  
+  .building-manager h1 {
+    margin: 0 0 20px 0;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  
+  .building-form {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #777777;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  
+  .form-group input {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    width: 70px;
+    text-align: center;
+    font-size: 1.1em;
+  }
+  
+  .add-building-btn {
+    background-color: #c01e1e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+  }
+  
+  .add-building-btn:hover {
+    background-color: #960f0f; 
+  }
+  
+  .buildings-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 200px;
+  }
+  
+  .building-wrapper {
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    width: fit-content; 
+  }
+  
+  .building-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #777777;
+    padding: 10px 20px;
+    border-bottom: 1px solid #777;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: white;
+  }
+  
+  .building-header h2 {
+    margin: 0;
+    color: #ffffff;
+  }
+  
+  .building-header p {
+    margin: 0;
+    color: #dddddd; 
+    font-style: italic;
+  }
+  
+  .remove-building-btn {
+    background-color: #bb0000;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+  }
+  
+  .remove-building-btn:hover {
+    background-color: #880000;
+  }
+  
