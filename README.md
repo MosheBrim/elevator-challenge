@@ -8,7 +8,7 @@ This project implements an elevator system simulation with efficient scheduling 
 
 ## Architecture
 
-- **Factory Pattern**: Creates system components through a centralized factory
+- **Abstract Factory Pattern**: Creates system components through a centralized factory interface, allowing easy substitution of component families
 - **Class-based Design**: Well-defined classes with clear responsibilities
 - **Component-based UI**: React components reflecting the logical structure
 
