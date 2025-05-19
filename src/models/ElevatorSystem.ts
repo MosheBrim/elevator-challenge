@@ -1,12 +1,13 @@
 import { Elevator } from "./Elevator";
 import { Floor } from "./Floor";
+import { AbstractFactory } from "./AbstractFactory";
 import { Factory } from "./Factory";
 import { BuildingConfig, ElevatorState, FloorState } from "../types/types";
 
 export class ElevatorSystem {
   private elevators: Elevator[];
   private floors: Floor[];
-  private factory: Factory;
+  private factory: AbstractFactory;
   private floorCount: number;
   private elevatorCount: number;
   private config: BuildingConfig;

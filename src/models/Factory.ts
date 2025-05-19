@@ -2,8 +2,9 @@ import { Elevator } from "./Elevator";
 import { Floor } from "./Floor";
 import { ElevatorSystem } from "./ElevatorSystem";
 import { BuildingConfig, ElevatorSystemConfig } from "../types/types";
+import { AbstractFactory } from "./AbstractFactory";
 
-export class Factory {
+export class Factory implements AbstractFactory {
   private config: BuildingConfig;
 
   constructor(config: BuildingConfig) {
